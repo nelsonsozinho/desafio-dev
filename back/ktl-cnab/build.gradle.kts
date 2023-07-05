@@ -47,6 +47,8 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	runtimeOnly("org.postgresql:postgresql")
 
+//	testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.3")
+
 	testImplementation("io.kotest:kotest-assertions-core-jvm:4.3.1")
 	testImplementation("org.testcontainers:junit-jupiter:1.16.3")
 	testImplementation("org.testcontainers:postgresql:1.16.3")
