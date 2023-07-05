@@ -6,7 +6,7 @@ import java.util.*
 import javax.persistence.*
 
 @Entity
-@Table(name = "oauth_role")
+@Table(name = "cnab_role")
 class Role {
 
     @Id

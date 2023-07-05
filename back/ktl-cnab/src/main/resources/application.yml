@@ -17,6 +17,10 @@ spring:
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     open-in-view: false
+  servlet:
+    multipart:
+      max-file-size: 500KB
+      max-request-size: 500KB
 
 flyway:
   url: jdbc:postgresql://localhost:5432/ktl-cnab
@@ -41,6 +45,6 @@ server:
   reflectoring:
     trace: true
   servlet:
-    context-path: /oauth
+    context-path: /api
     session:
       timeout: 20s

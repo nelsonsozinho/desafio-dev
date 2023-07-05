@@ -1,1 +1,1 @@
-ALTER TABLE public.oauth_user ALTER COLUMN refresh_token TYPE text USING refresh_token::text;
+ALTER TABLE public.cnab_user ALTER COLUMN refresh_token TYPE text USING refresh_token::text;

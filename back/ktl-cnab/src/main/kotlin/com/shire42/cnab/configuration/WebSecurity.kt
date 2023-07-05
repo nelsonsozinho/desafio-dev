@@ -41,7 +41,7 @@ class WebSecurity(
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
             .authorizeRequests()
-            .antMatchers("/oauth/**").permitAll()
+            .antMatchers("/api/**").permitAll()
 //            .antMatchers("/error/**").permitAll()
             .antMatchers(HttpMethod.POST, "/login").permitAll()
             .antMatchers(HttpMethod.POST, "/user").permitAll()

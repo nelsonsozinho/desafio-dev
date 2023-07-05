@@ -8,7 +8,7 @@ import java.util.*
 import javax.persistence.*
 
 @Entity
-@Table(name = "oauth_user")
+@Table(name = "cnab_user")
 class User(
 
     @Id
