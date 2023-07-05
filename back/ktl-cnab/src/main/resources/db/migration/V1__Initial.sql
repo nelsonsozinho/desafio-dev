@@ -25,10 +25,10 @@ ALTER TABLE ONLY public.users_roles
     ADD CONSTRAINT users_roles_pkey PRIMARY KEY (user_id, role_id);
 
 ALTER TABLE ONLY public.cnab_role
-    ADD CONSTRAINT budget_role_pkey PRIMARY KEY (id);
+    ADD CONSTRAINT cnab_role_pkey PRIMARY KEY (id);
 
 ALTER TABLE ONLY public.cnab_user
-    ADD CONSTRAINT budget_user_pkey PRIMARY KEY (id);
+    ADD CONSTRAINT cnab_user_pkey PRIMARY KEY (id);
 
 ALTER TABLE ONLY public.users_roles
     ADD CONSTRAINT fk3b0gkanmye6xr4cgeu14xyvcy FOREIGN KEY (user_id) REFERENCES public.cnab_user(id);
