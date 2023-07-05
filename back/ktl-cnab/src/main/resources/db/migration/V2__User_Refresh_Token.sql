@@ -1,0 +1,1 @@
+alter table public.oauth_user add refresh_token varchar(255) NULL;

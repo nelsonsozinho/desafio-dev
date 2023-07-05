@@ -1,0 +1,2 @@
+insert into oauth_user (id, first_name, last_name, password, username, refresh_token)
+values ('43fadef7-3b18-437b-a1c1-ee1b1c7a8bf2', 'Fist', 'User', '$2a$10$oWHtUKl6gWtnc3HW0dhF6uemKAm4cSSvMz5H8ccRxwx988.b0dbmy', 'guest', '');
