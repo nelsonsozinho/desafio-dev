@@ -1,6 +1,5 @@
 package com.shire42.cnab.record
 
-import com.shire42.cnab.model.TransactionType
 import java.time.LocalDateTime
 
 interface Record {

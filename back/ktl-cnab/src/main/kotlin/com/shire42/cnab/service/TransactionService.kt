@@ -9,7 +9,6 @@ import com.shire42.cnab.record.process.CnabRecordFile
 import com.shire42.cnab.repository.TransactionRepository
 import com.shire42.cnab.repository.TransactionTypeRepository
 import org.springframework.stereotype.Service
-import java.io.FileInputStream
 import java.io.InputStream
 import javax.transaction.Transactional
 
