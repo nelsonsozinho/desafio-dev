@@ -30,6 +30,10 @@ data class Transaction(
     @Column(name = "owner_name")
     var ownerName: String,
 
+
+    @Column(name = "store_name")
+    var storeName: String,
+
 ):
     AbstractEntity() {
 
