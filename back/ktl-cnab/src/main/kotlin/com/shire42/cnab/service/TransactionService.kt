@@ -10,6 +10,7 @@ import com.shire42.cnab.repository.TransactionRepository
 import com.shire42.cnab.repository.TransactionTypeRepository
 import org.springframework.stereotype.Service
 import java.io.FileInputStream
+import java.io.InputStream
 import javax.transaction.Transactional
 
 @Service
@@ -19,9 +20,15 @@ class TransactionService(
 ) {
 
     @Transactional
-    fun parserAndSaveTransactionFile(stream: FileInputStream) {
+    fun parserAndSaveTransactionFile(stream: InputStream): TransactionSummarizeRest {
         val list = parserToTransaction(stream)
-        transactionRepository.saveAll(list)
+        val transactions = transactionRepository.saveAll(list)
+        val transactionsRest = parserTransactions(transactions)
+        
+        return TransactionSummarizeRest(
+            transactions = transactionsRest,
+            transactionAmount = summarizeTransactions(transactions)
+        )
     }
 
     fun findTransactionsByStoreOwner(storeName: String): TransactionSummarizeRest {
@@ -67,7 +74,7 @@ class TransactionService(
         return transactionsRest
     }
 
-    private fun parserToTransaction(stream: FileInputStream): List<Transaction> {
+    private fun parserToTransaction(stream: InputStream): List<Transaction> {
         val list = ArrayList<Transaction>()
         listRecords(stream).forEach {
             val transactionType = this.getTransactionType(it.findType())
@@ -87,7 +94,7 @@ class TransactionService(
         return list
     }
 
-    private fun listRecords(stream: FileInputStream): List<Record> {
+    private fun listRecords(stream: InputStream): List<Record> {
         val recordFile = CnabRecordFile(stream)
         return recordFile.createRecords()
     }
