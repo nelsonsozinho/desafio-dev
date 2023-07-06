@@ -8,6 +8,6 @@ import java.util.*
 @Repository
 interface TransactionRepository: JpaRepository<Transaction, UUID> {
 
-    fun findByStoreName(storeName: String): List<Record>
+    fun findByStoreName(storeName: String): List<Transaction>
 
 }

@@ -3,13 +3,17 @@ package com.shire42.cnab.model
 import java.time.LocalDateTime
 import javax.persistence.CascadeType
 import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.JoinColumn
 import javax.persistence.ManyToOne
 import javax.persistence.Table
 
+@Entity
 @Table(name = "cnab_transaction")
 data class Transaction(
 
     @ManyToOne(cascade = [CascadeType.ALL])
+    @JoinColumn(name="id_type", nullable=false)
     var type: TransactionType,
 
     @Column(name = "data")
@@ -24,12 +28,8 @@ data class Transaction(
     @Column(name = "card_number")
     var cardNumber: String,
 
-    @Column(name = "hour")
-    var hour: String,
-
     @Column(name = "owner_name")
     var ownerName: String,
-
 
     @Column(name = "store_name")
     var storeName: String,

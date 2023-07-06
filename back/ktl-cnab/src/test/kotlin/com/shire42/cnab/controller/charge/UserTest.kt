@@ -1,11 +1,11 @@
 package com.shire42.cnab.controller.charge
 
-import com.shire42.cnab.TestEnvironmentConfigTest
+import com.shire42.cnab.TestWebEnvironmentConfigTest
 import org.junit.jupiter.api.Test
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.post
 
-class UserTest: TestEnvironmentConfigTest() {
+class UserTest: TestWebEnvironmentConfigTest() {
 
     @Test
     fun `test add new user`() {

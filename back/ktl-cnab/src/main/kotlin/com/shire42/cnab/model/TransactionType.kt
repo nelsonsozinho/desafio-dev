@@ -1,9 +1,11 @@
 package com.shire42.cnab.model
 
 import javax.persistence.Column
+import javax.persistence.Entity
 import javax.persistence.OneToMany
 import javax.persistence.Table
 
+@Entity
 @Table(name = "cnab_transaction_type")
 data class TransactionType(
 
@@ -16,7 +18,7 @@ data class TransactionType(
     @Column(name = "nature")
     var nature: String,
 
-    @Column(name = "siugnal")
+    @Column(name = "signal")
     var signal: Char,
 
     @OneToMany(mappedBy = "type")

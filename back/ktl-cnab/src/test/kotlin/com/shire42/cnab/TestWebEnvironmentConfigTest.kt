@@ -24,15 +24,12 @@ import org.testcontainers.utility.DockerImageName
 @Testcontainers
 @AutoConfigureMockMvc
 @DirtiesContext
-class TestEnvironmentConfigTest {
+class TestWebEnvironmentConfigTest {
 
     companion object {
 
         @Container
         private val postgreSQLContainer = PostgreSQLContainer<Nothing>("postgres:latest")
-
-        @Container
-        private val kafka = KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:6.2.1"))
 
         @DynamicPropertySource
         @JvmStatic
