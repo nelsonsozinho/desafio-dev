@@ -15,7 +15,7 @@ class CnabController(private val service: TransactionService) {
 
     @PostMapping("/upload")
     fun uploadCnabFile(@RequestParam("file") multipart: MultipartFile): ResponseEntity<TransactionSummarizeRest> {
-        return ResponseEntity(service.parserAndSaveTransactionFile(multipart.inputStream), HttpStatus.OK)
+        return ResponseEntity(service.parserAndSaveTransactionFile(multipart.inputStream), HttpStatus.CREATED)
 
     }
 

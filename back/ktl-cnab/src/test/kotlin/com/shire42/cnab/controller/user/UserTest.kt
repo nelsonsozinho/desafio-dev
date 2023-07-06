@@ -1,4 +1,4 @@
-package com.shire42.cnab.controller.charge
+package com.shire42.cnab.controller.user
 
 import com.shire42.cnab.TestWebEnvironmentConfigTest
 import org.junit.jupiter.api.Test
