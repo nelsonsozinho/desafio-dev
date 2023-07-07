@@ -42,8 +42,6 @@ server:
     include-binding-errors: always
     include-stacktrace: never
     include-exception: false
-  reflectoring:
-    trace: true
   servlet:
     context-path: /api
     session:

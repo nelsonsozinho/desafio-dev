@@ -6,8 +6,8 @@ plugins {
 	id("org.flywaydb.flyway") version "8.4.2"
 
 	kotlin("jvm") version "1.6.10"
-	kotlin("plugin.spring") version "1.6.10"
-	kotlin("plugin.jpa") version "1.6.10"
+	kotlin("plugin.spring") version "1.9.0"
+	kotlin("plugin.jpa") version "1.9.0"
 }
 
 group = "com.shire42"
@@ -42,12 +42,13 @@ dependencies {
 	implementation("com.fasterxml.jackson.core:jackson-databind:2.13.1")
 
 	implementation("org.flywaydb:flyway-core:8.4.2")
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0")
+	implementation("io.springfox:springfox-boot-starter:3.0.0")
+
 
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	runtimeOnly("org.postgresql:postgresql")
-
-//	testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.3")
 
 	testImplementation("io.kotest:kotest-assertions-core-jvm:4.3.1")
 	testImplementation("org.testcontainers:junit-jupiter:1.16.3")

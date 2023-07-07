@@ -11,7 +11,7 @@ fun main(args: Array<String>) {
 }
 
 fun configureApplication(builder: SpringApplicationBuilder): SpringApplicationBuilder {
-	return builder.sources(com.shire42.cnab.CnabApplication::class.java)
+	return builder.sources(CnabApplication::class.java)
 }
 
 

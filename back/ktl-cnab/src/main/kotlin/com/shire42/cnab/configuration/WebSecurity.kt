@@ -34,6 +34,7 @@ class WebSecurity(
     @Autowired
     private lateinit var jwtUtils: JwtUtils
 
+
     override fun configure(http: HttpSecurity) {
         http
             .cors().and()
@@ -41,10 +42,13 @@ class WebSecurity(
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
             .authorizeRequests()
-            .antMatchers("/api/**").permitAll()
-//            .antMatchers("/error/**").permitAll()
             .antMatchers(HttpMethod.POST, "/login").permitAll()
             .antMatchers(HttpMethod.POST, "/user").permitAll()
+            .antMatchers(
+                "/v2/api-docs/**",
+                "/swagger-ui/**",
+                "/v2/api-docs/**",
+                "/swagger-resources/**").permitAll()
             .anyRequest().authenticated()
             .and()
             .addFilter(JWTAuthenticationFilter(authenticationManager(), securityProperties, jwtUtils, userService))
