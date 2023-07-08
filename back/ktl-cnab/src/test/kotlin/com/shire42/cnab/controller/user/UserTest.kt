@@ -37,7 +37,7 @@ class UserTest: TestWebEnvironmentConfigTest() {
         mockMvc
             .post("/user") {
                 content = """{
-                        "username": "superuser",
+                        "username": "john.doe",
                         "password": "newuser",
                         "firstName": "Guest", 
                         "lastName": "LastName"

@@ -49,8 +49,8 @@ class TestWebEnvironmentConfigTest {
 
     fun getUserToken(): String? {
         val bodyParams = HashMap<String, String>()
-        bodyParams["username"] = "superuser"
-        bodyParams["password"] = "superuser"
+        bodyParams["username"] = "john.doe"
+        bodyParams["password"] = "test1234"
 
         val result: MvcResult = mockMvc.post("/login") {
             accept = MediaType.APPLICATION_JSON

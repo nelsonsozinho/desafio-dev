@@ -45,7 +45,6 @@ class WebSecurity(
             .antMatchers(HttpMethod.POST, "/login").permitAll()
             .antMatchers(HttpMethod.POST, "/user").permitAll()
             .antMatchers(
-                "/v2/api-docs/**",
                 "/swagger-ui/**",
                 "/v2/api-docs/**",
                 "/swagger-resources/**").permitAll()

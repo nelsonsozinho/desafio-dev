@@ -5,7 +5,7 @@ spring:
   application:
     name: ktl-cnab
   mvc:
-    pathmatch:
+    path_match:
       matching-strategy: ant_path_matcher
   datasource:
     driver-class-name: org.postgresql.Driver

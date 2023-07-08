@@ -42,7 +42,6 @@ dependencies {
 	implementation("com.fasterxml.jackson.core:jackson-databind:2.13.1")
 
 	implementation("org.flywaydb:flyway-core:8.4.2")
-	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0")
 	implementation("io.springfox:springfox-boot-starter:3.0.0")
 
 
