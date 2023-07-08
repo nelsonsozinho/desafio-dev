@@ -21,7 +21,12 @@ class CnabController(private val service: TransactionService) {
     @ApiOperation(value = "Upload CNAB file with the transactions ", produces = "application/json")
     fun uploadCnabFile(@RequestParam("file") multipart: MultipartFile): ResponseEntity<TransactionSummarizeRest> {
         return ResponseEntity(service.parserAndSaveTransactionFile(multipart.inputStream), HttpStatus.CREATED)
+    }
 
+    @GetMapping("/list")
+    @ApiOperation(value = "List Transactions", produces = "application/json")
+    fun listTransactions(): ResponseEntity<TransactionSummarizeRest> {
+        return ResponseEntity(service.listTransactions(), HttpStatus.OK)
     }
 
     @GetMapping("/find")

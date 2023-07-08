@@ -43,6 +43,15 @@ class TransactionService(
         )
     }
 
+    fun listTransactions(): TransactionSummarizeRest {
+        val transactions = this.transactionRepository.findAll()
+        val transactionsRest = parserTransactions(transactions)
+        return TransactionSummarizeRest(
+            transactions = transactionsRest,
+            transactionAmount = summarizeTransactions(transactions)
+        )
+    }
+
     private fun summarizeTransactions(transactions: List<Transaction>): Double {
         var value: Double = 0.0
 

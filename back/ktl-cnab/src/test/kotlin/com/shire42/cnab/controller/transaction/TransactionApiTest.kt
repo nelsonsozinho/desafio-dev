@@ -65,4 +65,24 @@ class TransactionApiTest: TestWebEnvironmentConfigTest() {
             }
     }
 
+    @Test
+    fun `should list all transactions in database`() {
+        val token = getUserToken()
+        mockMvc
+            .get("/cnab/list") {
+                accept = MediaType.APPLICATION_JSON
+                headers {
+                    header("Content-Type", "application/json")
+                    header("Authorization", token!!)
+                }
+            }.andExpect {
+                status { isOk() }
+                content {
+                    contentType(MediaType.APPLICATION_JSON)
+                }
+            }.andDo {
+                print()
+            }
+    }
+
 }
