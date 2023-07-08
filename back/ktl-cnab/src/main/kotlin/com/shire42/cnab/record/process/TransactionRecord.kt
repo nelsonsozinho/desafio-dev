@@ -25,28 +25,28 @@ class TransactionRecord(private val record: String): Record {
     }
 
     override fun findValue(): Double {
-        var value = StringUtils.substring(record, 10, 19)
+        var value = StringUtils.substring(record, 10, 19).trim()
         return value.toDouble() / 100
     }
 
     override fun findCPF(): String {
-        return StringUtils.substring(record, 19, 30)
+        return StringUtils.substring(record, 19, 30).trim()
     }
 
     override fun findCardNumber(): String {
-        return StringUtils.substring(record, 30, 42);
+        return StringUtils.substring(record, 30, 42).trim()
     }
 
     override fun findHour(): String {
-        return StringUtils.substring(record, 42, 48)
+        return StringUtils.substring(record, 42, 48).trim()
     }
 
     override fun findStoreOwner(): String {
-        return StringUtils.substring(record, 48, 62)
+        return StringUtils.substring(record, 48, 62).trim()
     }
 
     override fun findStoreName(): String {
-        return StringUtils.substring(record, 62, 81)
+        return StringUtils.substring(record, 62, 81).trim()
     }
 
 }

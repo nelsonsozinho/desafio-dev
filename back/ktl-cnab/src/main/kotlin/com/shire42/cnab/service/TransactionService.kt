@@ -31,7 +31,11 @@ class TransactionService(
     }
 
     fun findTransactionsByStoreOwner(storeName: String): TransactionSummarizeRest {
-        val transactions = this.transactionRepository.findByStoreName(storeName)
+        val transactions =
+            if (storeName.isBlank())
+                this.transactionRepository.findAll()
+            else
+                this.transactionRepository.findByStoreName(storeName.uppercase())
         val transactionsRest = parserTransactions(transactions)
         return TransactionSummarizeRest(
             transactions = transactionsRest,
