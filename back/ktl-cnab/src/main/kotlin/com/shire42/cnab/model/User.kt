@@ -6,6 +6,7 @@ import org.hibernate.annotations.Type
 import java.io.Serializable
 import java.util.*
 import javax.persistence.*
+import kotlin.collections.HashSet
 
 @Entity
 @Table(name = "cnab_user")
@@ -39,10 +40,10 @@ class User(
         joinColumns = [JoinColumn(name = "user_id", referencedColumnName = "id")],
         inverseJoinColumns = [JoinColumn(name = "role_id", referencedColumnName = "id")]
     )
-    var roles: Set<Role>? = null,
+    var roles: MutableSet<Role> = HashSet<Role>(),
 
 
-): Serializable {
+    ): Serializable {
     fun toUserRest() = UserRest(
         id = id,
         username = username,

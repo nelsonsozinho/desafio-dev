@@ -4,6 +4,7 @@ import com.shire42.cnab.controller.error.TokenRefreshException
 import com.shire42.cnab.controller.error.UserWithSameLoginException
 import com.shire42.cnab.controller.rest.RefreshTokenRest
 import com.shire42.cnab.model.User
+import com.shire42.cnab.repository.RoleRepository
 import com.shire42.cnab.repository.UserRepository
 import com.shire42.cnab.utils.JwtUtils
 import org.springframework.stereotype.Service
@@ -13,13 +14,18 @@ import java.util.*
 @Service
 class UserService(
     private val userRepository: UserRepository,
+    private val roleRepository: RoleRepository,
     private val jwtUtils: JwtUtils
 ) {
 
     fun saveUser(user: User): User {
         val userSameLogin = userRepository.findUserByUsername(user.username)
-        if(userSameLogin.isEmpty)
+        if(userSameLogin.isEmpty) {
+            //TODO change this to receive the role name as a request parameter
+            val roleAdmin = roleRepository.findByRoleName("ROLE_ADMIN")
+            user.roles.add(roleAdmin)
             return userRepository.save(user)
+        }
 
         throw UserWithSameLoginException(user.username!!, "You already has account")
     }

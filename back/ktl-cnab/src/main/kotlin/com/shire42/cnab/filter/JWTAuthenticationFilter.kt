@@ -4,6 +4,7 @@ package com.shire42.cnab.filter
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
+import com.shire42.cnab.controller.rest.UserAuthRest
 import com.shire42.cnab.service.UserService
 import com.shire42.cnab.utils.JwtUtils
 import com.shire42.cnab.utils.SecurityProperties
@@ -55,7 +56,7 @@ class JWTAuthenticationFilter(
         auth: Authentication
     ) {
         val authClaims: MutableList<String> = mutableListOf()
-        val tokenMap = HashMap<String, String>()
+        val userMap = HashMap<String, Any>()
         var dbUser = userService.findUserByUserName(auth.name)
 
         auth.authorities?.let { authorities ->
@@ -66,15 +67,23 @@ class JWTAuthenticationFilter(
         userService.createRefreshToken(dbUser.id!!)
         dbUser = userService.findUserById(dbUser.id!!)
 
-        tokenMap["Token"] = token
-        tokenMap["RefreshToken"] = dbUser.refreshToken!!
-        tokenMap["Prefix"] = securityProperties.tokenPrefix.trim()
-        tokenMap["Expiration"] = Date().add(Calendar.DAY_OF_MONTH, securityProperties.expirationTime).toString()
+        val userAuth = UserAuthRest(
+            firstName = dbUser.firstName!!,
+            lastName = dbUser.lastName!!,
+            refreshToken = dbUser.refreshToken!!,
+            expiration = Date().add(Calendar.DAY_OF_MONTH, securityProperties.expirationTime),
+            token = token,
+            prefix = securityProperties.tokenPrefix.trim(),
+            userName = dbUser.username!!,
+            roles = dbUser.roles?.map { it.roleName }?.toList()
+        )
+
+        userMap["user"] = userAuth
 
         response.contentType = "application/json"
         response.characterEncoding = "UTF-8"
         response.addHeader(securityProperties.headerString, securityProperties.tokenPrefix + token)
-        response.writer.write(mapper.writeValueAsString(tokenMap))
+        response.writer.write(mapper.writeValueAsString(userMap))
     }
 
     fun Date.add(field: Int, amount: Int): Date {

@@ -6,6 +6,7 @@ import io.jsonwebtoken.security.Keys
 import org.springframework.stereotype.Component
 import java.time.Instant
 import java.util.*
+import kotlin.collections.HashMap
 
 @Component
 class JwtUtils(
@@ -14,8 +15,9 @@ class JwtUtils(
 
     fun generateToken(username: String): String {
         val authClaims: MutableList<String> = mutableListOf()
-
+        val valuesClaims: HashMap<String, String> = HashMap<String, String>()
         return Jwts.builder()
+            .setClaims(valuesClaims)
             .setSubject(username)
             .claim("auth", authClaims)
             .setIssuedAt(Date())
