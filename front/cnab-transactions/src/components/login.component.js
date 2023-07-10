@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 
 import AuthService from "../services/auth.service";
 
-import { withRouter } from '../common/with-router';
+import {withRouter} from '../common/with-router';
 
 const required = value => {
   if (!value) {
@@ -24,7 +24,9 @@ class Login extends Component {
     this.onChangeUsername = this.onChangeUsername.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
 
+
     this.state = {
+      redirect: null,
       username: "",
       password: "",
       loading: false,
@@ -81,7 +83,20 @@ class Login extends Component {
     }
   }
 
+  componentDidMount() {
+    const currentUser = AuthService.getCurrentUser();
+    if (currentUser)
+      this.setState({ redirect: "/home" });
+  }
+
   render() {
+
+    if (this.state.redirect) {
+      // return <Navigate to={this.state.redirect} />
+      this.props.router.navigate("/home");
+
+    }
+
     return (
       <div className="col-md-12">
         <div className="card card-container">

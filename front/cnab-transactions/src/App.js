@@ -67,8 +67,8 @@ class App extends Component {
           </Link>
           <div className="navbar-nav mr-auto">
             <li className="nav-item">
-              <Link to={"/home"} className="nav-link">
-                Home
+              <Link to={"/profile"} className="nav-link">
+                Profile
               </Link>
             </li>
 
@@ -113,7 +113,7 @@ class App extends Component {
 
         <div className="container mt-3">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Login />} />
             <Route path="/home" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
@@ -124,7 +124,6 @@ class App extends Component {
           </Routes>
         </div>
 
-        {/* <AuthVerify logOut={this.logOut}/> */}
       </div>
     );
   }

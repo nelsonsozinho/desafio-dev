@@ -32,9 +32,12 @@ class AuthService {
   }
 
   getCurrentUser() {
-    var user = JSON.parse(localStorage.getItem('user'))
-    if(user)
-      return user.user;
+    var element = localStorage.getItem('user')
+    if(element) {
+      var user = JSON.parse(localStorage.getItem('user'))
+      if (user)
+        return user.user;
+    }
 
     return null
   }

@@ -152,8 +152,7 @@ class Home extends Component {
         {this.state.content.transactions?.length && (
         <div>
           <div>
-            <caption>Total</caption>
-            {this.formatValue(this.state.content.transactionAmount)}
+            <p><b>Total:</b> {this.formatValue(this.state.content.transactionAmount)}</p>
           </div>
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
