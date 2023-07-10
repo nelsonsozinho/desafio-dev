@@ -34,7 +34,8 @@ class JWTAuthorizationFilter(
             SecurityContextHolder.getContext().authentication = it
         }
 
-        chain.doFilter(request, response)    }
+        chain.doFilter(request, response)
+    }
 
     private fun getAuthentication(token: String): UsernamePasswordAuthenticationToken? {
         return try {

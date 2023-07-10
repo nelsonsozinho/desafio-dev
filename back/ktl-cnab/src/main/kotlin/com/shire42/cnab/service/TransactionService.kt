@@ -78,7 +78,8 @@ class TransactionService(
                 cardNumber = it.cardNumber,
                 cpf = it.cpf,
                 transactionDescription = it.type.description,
-                nature = it.type.nature
+                nature = it.type.nature,
+                id = it.id.toString()
             )
             transactionsRest.add(transactionRest)
         }

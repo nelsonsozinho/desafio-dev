@@ -17,7 +17,7 @@ class JwtUtils(
         val authClaims: MutableList<String> = mutableListOf()
         val valuesClaims: HashMap<String, String> = HashMap<String, String>()
         return Jwts.builder()
-            .setClaims(valuesClaims)
+//            .setClaims(valuesClaims)
             .setSubject(username)
             .claim("auth", authClaims)
             .setIssuedAt(Date())
