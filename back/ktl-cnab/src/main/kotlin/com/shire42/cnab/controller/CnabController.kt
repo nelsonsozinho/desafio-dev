@@ -24,13 +24,13 @@ class CnabController(private val service: TransactionService) {
     }
 
     @GetMapping("/list")
-    @ApiOperation(value = "List Transactions", produces = "application/json")
+    @ApiOperation(value = "List all transactions", produces = "application/json")
     fun listTransactions(): ResponseEntity<TransactionSummarizeRest> {
         return ResponseEntity(service.listTransactions(), HttpStatus.OK)
     }
 
     @GetMapping("/find")
-    @ApiOperation(value = "Search", produces = "application/json")
+    @ApiOperation(value = "Filter the transaction by property owner name", produces = "application/json")
     fun findTransactions(@RequestParam("ownerName") ownerName: String): ResponseEntity<TransactionSummarizeRest> {
         return ResponseEntity(service.findTransactionsByStoreOwner(ownerName), HttpStatus.OK)
     }
